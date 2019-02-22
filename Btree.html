@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.8.6, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+  <meta name="description" content="">
+  <title>B, B+ ve B# Tree Nedir? Aralarındaki farklar nelerdir?</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&subset=latin,cyrillic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700&subset=latin,vietnamese,latin-ext">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/socicon/css/socicon.min.css">
+  <link rel="stylesheet" href="assets/puritym/css/style.css">
+  <link rel="stylesheet" href="assets/dropdown-menu/style.light.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link rel="stylesheet" href="assets/bootstrap/css/body.css" type="text/css"> 
+  
+  
+</head>
+<body>
+  <section id="dropdown-menu-5" data-rv-view="126">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+
+        <div class="container">
+
+            <div class="navbar-brand">
+                
+                <a class="text-primary" href="index.html">Nur Sultan Bolel<br></a>
+            </div>
+
+            <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                <div class="hamburger-icon"></div>
+            </button>
+
+            <ul class="nav-dropdown collapse pull-xs-right navbar-toggleable-sm nav navbar-nav" id="exCollapsingNavbar"><li class="nav-item"><a class="nav-link link" href="page1.html"></a></li><li class="nav-item"><a class="nav-link link" href="index.html">Ana Sayfa</a></li><li class="nav-item"><a class="nav-link link" href="" aria-expanded="false"></a></li><li class="nav-item dropdown"><a class="nav-link link" href="hakkımda.html" aria-expanded="false">Hakkımda</a></li><li class="nav-item"><a class="nav-link link" href="hakkımda.html" aria-expanded="false"></a></li><li class="nav-item"><a class="nav-link link" href="#iletisim" aria-expanded="false">İletişim</a></li></ul>
+
+        </div>
+
+    </nav>
+
+</section>
+
+<section class="mbr-section col-undefined mbr-after-navbar" id="content5-1o" data-rv-view="102" style=" padding-top: 6rem; padding-bottom: 0rem;">
+    <div class="container">
+        <h3 class="mbr-section-title display-2">B, B+, B#, Binary Tree Nedir? Aralarındaki farklar nelerdir?</h3>
+		<big><i>By Nur Sultan Bolel posted January 26,2019 </i></big>
+		
+        <div class="lead"><p><br> Selamlar😊 Bu yazımda bilgisayar bilimlerinde oldukça önemli bir yeri olan, sıkça kullanılan ve karıştırılan B, B+, B# ve Binary (ikili) ağaçlardan(tree) ve aralarındaki farklardan bahsedeceğim. Bu yazıdaki amacım sizlere ağaç veri yapısını anlatmak değil çok fazla varyasyonu olan ağaçların özelliklerinden bahsederek aralarındaki farkları açıklamak.  
+		<br></p></div>
+		
+		<div class="lead"><p><u><b>B Ağacının(B tree) Özellikleri:</b></u><br>
+		</p></div>
+		
+		<div class="lead"><p>
+		<li>Ağaçtaki her düğümde(node)(kök ve yaprak dışındaki düğümler) en fazla M-1 tane anahtar(key) bulunur.</li>
+		<li>Ağaçtaki her düğümün(kök ve yaprak dışındaki düğümler) en fazla M, en az M/2 tane çocuğu bulunur.</li>
+		<li>Düğümlerdeki anahtarların belirli bir düzeni vardır. Bir anahtarın sol tarafında bulunan alt ağaçtaki anahtarlar bu anahtarın öncülleridir(predecessor). Sağ tarafında bulunan alt ağaçtaki anahtarlar ise bu anahtarın ardışıklarıdır(successor). Bir düğümdeki anahtar, sol alt ağaçtaki tüm anahtarlardan büyüktür ve sağ alt ağaçtaki tüm anahtarlardan küçüktür.</li>
+		<li>Ağacın derinliği mümkün olduğunca küçük tutulur.</li>
+		<li>Ağacın yapraklarının bulunduğu seviyenin üzerinde herhangi bir boş alt ağaç bulunmaz.</li>
+		<li>Ağaçtaki tüm yapraklar aynı seviyede(level) bulunur.</li>
+		</p></div>
+		<div class="lead">
+		<img src="assets/images/B-tree.png" alt="B tree" width="1000px">
+		</div>
+		<div class="lead"><p><br>Yukarıdaki şekilde her bir düğümün ilk satırı anahtarları ikinci satır ise o düğümün çocuklarını(child) gösteren işaretçileri(pointer) temsil ediyor. 
+Şekil1’deki örnek üzerinden B ağacını inceleyecek olursak her düğümün en fazla M=4 en az M/2=4/2=2 tane çocuğu bulunuyor.
+		<br></p></div>
+		
+		
+		<div class="lead"><p><u><b>B# Ağacı(B# tree): </b></u><br>
+		</p></div>
+		
+		<div class="lead"><p>B ağaçlarına veri ekleme işleminde, verinin ekleneceği düğüm dolu ise düğüm ikiye bölünerek düğüm sayısı artırılır. Bölünme sonucunda düğümlerin doluluk oranı %50’dir ve veri ağaca eklenir. Fakat B# ağacında bölünme işlemini geciktirilerek düğümün doluluk oranı artar. Aşağıdaki görselde B ve B# ağaçları için ekleme işlemleri yapılmıştır.
+		<br></p></div>
+		<div class="lead">
+		<img src="assets/images/Bsharp-tree.png" alt="B# tree" width="600px">
+		</div>
+		<div class="lead"><p><br>Sol taraftaki örnekte bir B ağacına ekleme işlemi yapılmıştır. 5 sayısı 2 sayısından büyüktür ve 3 ve 4’ün bulunduğu düğümler ise doludur. Bu duruma göre düğüm bölünür ve okun gösterdiği şekilde ağaç biçimlenir.
+		<br></p></div>
+		<div class="lead"><p>Sağ taraftaki örnekte bir B# ağacına ekleme işlemi yapılmıştır. 5 sayısı 2 sayısından büyüktür ve 3 ve 4’ün bulunduğu düğümler ise doludur. Bu duruma göre düğüm bölünmesi geciktirilir ve okun gösterdiği şekilde ağaç biçimlenir. 
+		<br></p></div>
+		
+		
+		<div class="lead"><p><u><b>B+ Ağacının(B+ tree) Özellikleri: </b></u><br>
+		</p></div>
+		<div class="lead"><p>
+		<li>Ağaçtaki her düğümde(kök ve yaprak dışındaki düğümler) en fazla M-1 tane anahtar bulunur.</li>
+		<li>Ağaçtaki her düğümün(kök ve yaprak dışındaki düğümler) en fazla M tane çocuğu bulunur.</li>
+		<li>Düğümlerdeki anahtarların belirli bir düzeni vardır. Bir anahtarın sol tarafında bulunan alt ağaçtaki anahtarlar bu anahtarın öncülleridir. Sağ tarafında bulunan alt ağaçtaki anahtarlar ise bu anahtarın ardışıklarıdır. Bir düğümdeki anahtar, sol alt ağaçtaki tüm anahtarlardan büyüktür ve sağ alt ağaçtaki tüm anahtarlardan küçüktür.</li>
+		<li>Verilerin tamamı ağacın yapraklarında tutulur. Yaprakların dışındaki düğümlerde yalnızca anahtarlar tutulur.</li>
+		<li>Ağaçtaki yapraklar tek yönlü bağlı liste şeklinde birbirlerine bağlıdır.</li>
+		</p></div>
+		<div class="lead">
+		<img src="assets/images/Bplus-tree.png" alt="B+ tree" width="1000px">
+		</div><br>
+		
+		<div class="lead"><p><u><b>İkili Ağacın(Binary tree) Özellikleri: </b></u><br>
+		</p></div>
+		<div class="lead"><p>
+		<li>Her düğümün sağında ve solunda olmak üzere en fazla iki tane çocuğu bulunur(1 tane veya hiç çocuğu da olmayabilir).</li>
+		<li>İkili ağacın çeşitli varyasyonları bulunmaktadır.</li>
+		<li>İkili ağacın binary search tree, AVL tree, strictly binary tree, complete binary tree ve extended binary tree, vs. gibi bazı varyasyonları vardır(Aşağıda en sık karşılaşılan iki tanesini kısaca açıkladım).</li>
+		<u>İkili Arama Ağacı(binary search tree)</u>: Düğümdeki değer, sol alt ağaçtaki tüm anahtarlardan büyüktür ve sağ alt ağaçtaki tüm anahtarlardan küçüktür.
+		<br>
+		<u>AVL Ağacı(Adelson Velskii and Landis tree)</u>: Her bir düğümün sağ ve sol alt ağaçları aynı boyda olmalıdır. Denge faktörünün -1,0 ve 1 değerlerini alabilir. (denge faktörü = sağ alt ağacın boyu– sol alt ağacın boyu)
+		<br>
+		</p></div>
+		
+		<div class="lead">
+		<img src="assets/images/Binary-tree.png" alt="" width="400px">
+		</div>
+		<br><br>
+		
+		<div class="lead"><p><u><b>Sonuç: Karşılaştırma Tablosu </b></u><br></div>
+		<div class="lead">
+		<img src="assets/images/Table-tree.png" alt="" width="1000px">
+		</div>
+		<br><br>
+	</div>
+
+</section>
+
+<section class="mbr-section mbr-section-small mbr-footer" id="contacts3-f" data-rv-view="113" style="background-color: rgb(55, 56, 62); padding-top: 1.5rem; padding-bottom: 0rem;">
+    
+    <div class="container" id="iletisim">
+        <div class="row">
+            <div class="col-xs-12 col-md-3">
+                <p><strong>Address</strong><br>Eskişehir &amp; Ankara<br><br>
+<strong>Contacts</strong><br>
+Email: blog@nursultanbolel.com<br><br></p>
+
+            </div>
+            <div class="col-xs-12 col-md-3"></div>
+            <div class="col-xs-12 col-md-6" data-form-type="formoid">
+                <div data-form-alert="true"><div hidden="" data-form-alert-success="true">Thanks for filling out form!</div></div>
+                <form action="https://formspree.io/blog@nursultanbolel.com" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="Xc6OiXMnWAd3rMEak1ALGmWnHKmvmBdq41ffQf/ALE1fq/B+oxrovxFhfEBezEqzHEBJOqmcfYQ0cK5D8eLqrQ+cwzWC8LTiztwrvz4v1n9C23A7Yo5aVRR4tn59N3Xi" data-form-email="true">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" placeholder="Ad-Soyad*" data-form-field="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" placeholder="Email*" data-form-field="Email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea class="form-control input-sm input-inverse" name="message" rows="4" required="" placeholder="Mesajınız..." data-form-field="Message"></textarea>
+                    </div>
+					<div class="col-sm-8 text-xs-left"> <a class="btn btn-social socicon-bg-linkedin" title="LinkedIn" target="_blank" href="https://www.linkedin.com/in/nur-sultan-bolel-a85a24119/"><i class="socicon socicon-linkedin"></i></a>  <a class="btn btn-social socicon-bg-github" title="Github" target="_blank" href="https://github.com/nursultanbolel"><i class="socicon socicon-github"></i></a> </div>
+                    <div class="text-xs-right"><button type="submit" class="btn btn-black">Mesaj Göder</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="mbr-section mbr-section-nopadding mbr-footer" id="footer1-g" data-rv-view="140" style="background-color: rgb(38, 39, 44); padding-top: 1rem; padding-bottom: 0.66rem;">
+
+</footer>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/puritym/js/script.js"></script>
+  <script src="assets/dropdown-menu/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>
